@@ -3,6 +3,8 @@ name: Build and Push Docker Image
 on:
   workflow_run:
     workflows: ["Test Backend"]  # This triggers when the 'Test Backend' workflow completes
+    branch:
+      - main
     types:
       - completed
 
