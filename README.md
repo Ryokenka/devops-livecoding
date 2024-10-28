@@ -48,8 +48,4 @@ Pushing Docker images to a registry centralizes storage and ensures consistent d
 
 ### Document your quality gate configuration.
 
-
-
-
-
-
+![img.png](img.png)
