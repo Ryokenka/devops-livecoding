@@ -54,6 +54,6 @@ jobs:
       - name: Build image and push httpd
         uses: docker/build-push-action@v3
         with:
-          context: ./httpd-server  # Specify the relative path of the Dockerfile for httpd
+          context: ./http-server  # Specify the relative path of the Dockerfile for httpd
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}  # Only push if on main branch
