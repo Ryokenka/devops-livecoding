@@ -26,3 +26,34 @@ jobs:
         run: mvn clean verify
         working-directory: simple-api
 
+  build-and-push-docker-image:
+    needs: test-backend  # Ensures this job only runs if 'test-backend' succeeds
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.5.0
+
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build image and push backend
+        uses: docker/build-push-action@v3
+        with:
+          context: ./simple-api  # Specify the relative path of the Dockerfile for backend
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api-backend:latest
+          push: ${{ github.ref == 'refs/heads/main' }}  # Only push if on main branch
+
+      - name: Build image and push database
+        uses: docker/build-push-action@v3
+        with:
+          context: ./database  # Specify the relative path of the Dockerfile for database
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api-database:latest
+          push: ${{ github.ref == 'refs/heads/main' }}  # Only push if on main branch
+
+      - name: Build image and push httpd
+        uses: docker/build-push-action@v3
+        with:
+          context: ./httpd-server  # Specify the relative path of the Dockerfile for httpd
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api-httpd:latest
+          push: ${{ github.ref == 'refs/heads/main' }}  # Only push if on main branch
