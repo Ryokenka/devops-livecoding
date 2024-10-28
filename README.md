@@ -44,6 +44,10 @@ This workflow supports automated CI checks to ensure that changes to the codebas
 
 Pushing Docker images to a registry centralizes storage and ensures consistent deployments across environments. It allows for version control, making rollbacks easy if needed. Integrating Docker images with CI/CD workflows streamlines builds and deployments by automating these steps. In microservices architectures, images enable independent scaling and updates of services.
 
+---
+
+### Document your quality gate configuration.
+
 
 
 
