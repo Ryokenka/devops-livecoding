@@ -37,3 +37,15 @@ The `test-backend` job includes the following steps:
    Runs Maven commands (`mvn clean verify`) to build and test the project. The `working-directory` option is specified to indicate the location of the `pom.xml` file.
 
 This workflow supports automated CI checks to ensure that changes to the codebase are tested consistently across `main` and `dev` branches and pull requests.
+
+---
+
+### For what purpose do we need to push docker images?
+
+Pushing Docker images to a registry centralizes storage and ensures consistent deployments across environments. It allows for version control, making rollbacks easy if needed. Integrating Docker images with CI/CD workflows streamlines builds and deployments by automating these steps. In microservices architectures, images enable independent scaling and updates of services.
+
+
+
+
+
+

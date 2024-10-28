@@ -23,7 +23,7 @@ jobs:
 
       #finally build your app with the latest command
       - name: Build and test with Maven
-        run: mvn clean verify
+        run:  mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Ryokenka_devops-livecoding -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         working-directory: simple-api
 
   build-and-push-docker-image:
