@@ -40,3 +40,10 @@ jobs:
           context: ./http-server  # Specify the relative path of the Dockerfile for httpd
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}  # Only push if on main branch
+
+      - name: Build image and push front
+        uses: docker/build-push-action@v3
+        with:
+          context: ./devops-front  # Specify the relative path of the Dockerfile for front
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api-front:latest
+          push: ${{ github.ref == 'refs/heads/main' }}  # Only push if on main branch

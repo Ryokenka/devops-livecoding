@@ -26,6 +26,11 @@ services:
     depends_on:
       - backend
 
+  front:
+    build: ./devops-front
+    networks :
+      - my-network
+
 volumes:
   db-volume:
 
