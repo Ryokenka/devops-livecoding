@@ -28,6 +28,8 @@ services:
 
   front:
     build: ./devops-front
+    ports:
+      - "80:80"
     networks :
       - my-network
 
