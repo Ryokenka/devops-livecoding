@@ -1,0 +1,11 @@
+- name: Run Frontend Application
+  community.docker.docker_container:
+    name: front
+    image: ryokenka/tp-devops-simple-api-front
+    ports:
+      - "8080:80"
+    env:
+      VUE_APP_API_URL: "http://my-api:8080/api"
+    networks:
+      - name: my-network
+    state: started
