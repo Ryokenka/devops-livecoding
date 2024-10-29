@@ -2,6 +2,7 @@
   community.docker.docker_container:
     name: front
     image: ryokenka/tp-devops-simple-api-front
+    pull: always
     ports:
       - "90:90"
     env:
