@@ -5,7 +5,7 @@
     ports:
       - "8080:80"
     env:
-      VUE_APP_API_URL: "http://my-api:8080/api"
+      VUE_APP_API_URL: "http://httpd/api"
     networks:
       - name: my-network
     state: started
